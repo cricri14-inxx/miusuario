@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi Bebi 💖</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #ffdde1, #ff99ac);
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            color: #c9184a;
+            margin: 0;
+            overflow: hidden;
+        }
+        .container {
+            margin-top: 100px;
+            transition: all 1s ease-in-out;
+        }
+        h1 {
+            font-size: 3em;
+            animation: fadeIn 2s ease-in-out;
+        }
+        p {
+            font-size: 1.5em;
+            width: 80%;
+            margin: 0 auto;
+            animation: fadeIn 3s ease-in-out;
+        }
+        .heart {
+            font-size: 2em;
+            animation: bounce 1s infinite alternate;
+        }
+        .buttons {
+            margin-top: 30px;
+        }
+        button {
+            background-color: #ff4d6d;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #c9184a;
+        }
+        #message-box, #final-message-box {
+            display: none;
+            margin-top: 50px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        img {
+            width: 200px;
+            margin-top: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+        @keyframes floating {
+            from { transform: translateY(0); }
+            to { transform: translateY(-20px); }
+        }
+        /* Corazones flotantes */
+        .heart-float {
+            position: absolute;
+            color: red;
+            font-size: 2em;
+            animation: floating 3s infinite alternate ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+    </audio>
+    <div class="container">
+        <h1>💖 Para mi Bebi 💖</h1>
+        <p>Hola Allison, quería hacerte algo especial porque eres la persona más increíble de mi vida. 💕</p>
+        <p>Te quiero mucho y espero poder pasar muchos más días del amor contigo. ¿Quieres ser mi San Valentín? 💘</p>
+        <div class="buttons">
+            <button onclick="showMessage()">Sí</button>
+            <button onclick="showMessage()">Por supuesto</button>
+        </div>
+    </div>
+    <div id="message-box">
+        <h2>💖 ¡Sabía que dirías que sí! 💖</h2>
+        <p>Desde que te conocí, mi vida ha sido más hermosa y especial. Cada momento contigo es un regalo, y no hay nada que quiera más que seguir creando recuerdos a tu lado. Eres mi alegría, mi paz y mi amor infinito. 💕</p>
+        <img src="https://i.imgur.com/3r8YqY2.png" alt="Corazón">
+        <br><br>
+        <button onclick="showFinalMessage()">Siguiente Sorpresa 🎁</button>
+    </div>
+    <div id="final-message-box">
+        <h2>💖 Mi promesa para ti 💖</h2>
+        <p>Prometo amarte cada día, en los momentos buenos y en los difíciles. Prometo ser tu apoyo, tu confidente y tu mejor amigo. Allison, tú eres mi felicidad, y nada me haría más feliz que compartir mi vida contigo. 💖</p>
+        <p>Te amo más de lo que las palabras pueden expresar. 💘</p>
+        <button onclick="finalMessage()">Te amo mucho 😘</button>
+    </div>
+    <script>
+        function showMessage() {
+            document.querySelector('.container').style.display = 'none';
+            document.getElementById('message-box').style.display = 'block';
+        }
+        function showFinalMessage() {
+            document.getElementById('message-box').style.display = 'none';
+            document.getElementById('final-message-box').style.display = 'block';
+        }
+        function finalMessage() {
+            alert('Siempre serás mi amor eterno, Bebi 💖');
+        }
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-float');
+            heart.innerHTML = '❤';
+            document.body.appendChild(heart);
+            const size = Math.random() * 30 + 10;
+            heart.style.fontSize = size + 'px';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = '100vh';
+            heart.animate([
+                { transform: 'translateY(0)' },
+                { transform: 'translateY(-100vh)' }
+            ], {
+                duration: Math.random() * 5000 + 4000,
+                iterations: 1
+            });
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+        setInterval(createHeart, 500);
+    </script>
+</body>
+</html>
